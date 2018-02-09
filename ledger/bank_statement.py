@@ -26,9 +26,8 @@ class BankStatement(object):
 
     @classmethod
     def load_data(cls, file_path):
-        with open(file_path, 'rb') as fp:
-            data = list(csv.DictReader(fp))
-        return data
+        import pandas as pd
+        return pd.read_csv(file_path)
 
 
 if __name__ == 'main':
