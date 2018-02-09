@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 #  -*- coding: utf-8 -*-
 
-import csv
-# load in csv file
-# get balance for a given date and account name
-
 
 class BankStatement(object):
 
