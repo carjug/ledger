@@ -8,11 +8,13 @@ class BankStatement(object):
         data = self.load_csv_as_dataframe(file_path)
         account_value = self.calculate_balance(account_name, data, date)
 
-        return "The balance for {}'s account is {}".format(account_name, format(account_value, '.2f'))
+        return "The balance for {}'s account on {} is {}".format(account_name, date, format(account_value, '.2f'))
 
     @classmethod
     def calculate_balance(cls, account_name, data, date):
+        # initialize all accounts at 0.00 per the exercise specifications
         account_value = 0.00
+
         for index, row in data.iterrows():
             if row['date'] <= date:
                 if row['from_account'] == account_name:
@@ -27,7 +29,13 @@ class BankStatement(object):
     @classmethod
     def load_csv_as_dataframe(cls, file_path):
         import pandas as pd
-        return pd.read_csv(file_path)
+        try:
+            dataframe = pd.read_csv(file_path)
+        except (Exception, IOError) as e:
+            raise BaseException("Failed to load {}, with message: {}"
+                                .format(file_path, e.message))
+
+        return dataframe
 
 
 if __name__ == 'main':
