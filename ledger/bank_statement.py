@@ -11,7 +11,6 @@ class BankStatement(object):
         self.date = date
         self.account_name = account_name
         self.filepath = filepath
-        self.balance = self.balance_inquiry()
 
     def balance_inquiry(self):
         data = self.load_data(self.filepath)
@@ -21,8 +20,6 @@ class BankStatement(object):
         with open(file_path, 'rb') as fp:
             data = list(csv.DictReader(fp))
         return data
-
-
 
 
 if __name__ == 'main':
