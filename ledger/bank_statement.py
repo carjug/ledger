@@ -8,8 +8,8 @@ import csv
 
 class BankStatement(object):
 
-    def balance_inquiry(self):
-        data = self.load_data(self.filepath)
+    def balance_inquiry(self, date, account_name, file_path):
+        data = self.load_data(file_path)
         return data
 
     def load_data(self, file_path):
