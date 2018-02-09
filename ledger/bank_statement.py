@@ -12,7 +12,8 @@ class BankStatement(object):
         data = self.load_data(file_path)
         return data
 
-    def load_data(self, file_path):
+    @classmethod
+    def load_data(cls, file_path):
         with open(file_path, 'rb') as fp:
             data = list(csv.DictReader(fp))
         return data
