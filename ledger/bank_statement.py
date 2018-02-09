@@ -5,7 +5,7 @@
 class BankStatement(object):
 
     def balance_inquiry(self, date, account_name, file_path):
-        data = self.load_data(file_path)
+        data = self.load_csv_as_dataframe(file_path)
         account_value = self.calculate_balance(account_name, data, date)
 
         return "The balance for {}'s account is {}".format(account_name, format(account_value, '.2f'))
@@ -25,7 +25,7 @@ class BankStatement(object):
         return account_value
 
     @classmethod
-    def load_data(cls, file_path):
+    def load_csv_as_dataframe(cls, file_path):
         import pandas as pd
         return pd.read_csv(file_path)
 
