@@ -1,0 +1,7 @@
+date,from_account,to_account,amount
+2015-01-16,john,mary,125.00
+2015-01-17,john,supermarket,20.00
+2015-01-17,mary,insurance,100.00
+2015-01-17,dale,john,50.00
+2015-01-17,john,alice,20.00
+2015-01-17,alice,dale,30.00
