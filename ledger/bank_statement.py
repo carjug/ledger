@@ -7,10 +7,6 @@ import csv
 
 
 class BankStatement(object):
-    def __init__(self, date, account_name, filepath):
-        self.date = date
-        self.account_name = account_name
-        self.filepath = filepath
 
     def balance_inquiry(self):
         data = self.load_data(self.filepath)
