@@ -28,12 +28,13 @@ class BankStatement(object):
 
     @classmethod
     def load_csv_as_dataframe(cls, file_path):
-        import pandas as pd
+        if not file_path:
+            raise ValueError("A path to a .csv file must be supplied.")
         try:
+            import pandas as pd
             dataframe = pd.read_csv(file_path)
-        except (Exception, IOError) as e:
-            raise BaseException("Failed to load {}, with message: {}"
-                                .format(file_path, e.message))
+        except IOError as e:
+            raise IOError("Failed to load {}, with message: {}".format(file_path, e.message))
 
         return dataframe
 
