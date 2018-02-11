@@ -4,7 +4,9 @@ from utils.csv_utils import CSVLoader
 class BankStatement(object):
 
     def balance_inquiry(self, date, account_name, file_path):
-        data = self.load_csv_as_dataframe(file_path)
+        """Loads csv data, calculates the balance, and returns a formatted string containing the account information"""
+
+        data = CSVLoader.load_as_dataframe(file_path)
         account_value = self.calculate_balance(account_name, data, date)
 
         return "The balance for {}'s account on {} is {}".format(account_name, date, format(account_value, '.2f'))
@@ -24,19 +26,3 @@ class BankStatement(object):
                     # credit the account
                     account_value += row['amount']
         return account_value
-
-    @classmethod
-    def load_csv_as_dataframe(cls, file_path):
-        if not file_path:
-            raise ValueError("A path to a .csv file must be supplied.")
-        try:
-            import pandas as pd
-            dataframe = pd.read_csv(file_path)
-        except IOError as e:
-            raise IOError("Failed to load {}, with message: {}".format(file_path, e.message))
-
-        return dataframe
-
-
-if __name__ == 'main':
-    pass
