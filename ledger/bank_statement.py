@@ -21,7 +21,7 @@ class BankStatement(object):
         """
 
         data = CSVLoader.load_as_dataframe(file_path)
-        account_value = self.calculate_balance(account_name, data, date)
+        account_value = self.calculate_balance(date, account_name, data)
 
         return "The balance for {}'s account on {} is {}".format(account_name, date, format(account_value, '.2f'))
 
