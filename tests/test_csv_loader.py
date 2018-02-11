@@ -1,6 +1,6 @@
 import unittest
 
-from utils.csv_utils import CSVLoader
+from file_loaders.csv_loader import CSVLoader
 from test_bank_statement import TestBankStatement as tbs
 
 

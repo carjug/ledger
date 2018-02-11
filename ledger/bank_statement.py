@@ -1,4 +1,4 @@
-from utils.csv_utils import CSVLoader
+from file_loaders.csv_loader import CSVLoader
 
 
 class BankStatement(object):
