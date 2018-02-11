@@ -1,5 +1,7 @@
 import unittest
 
+import pandas
+
 from file_loaders.csv_loader import CSVLoader
 from test_bank_statement import TestBankStatement as tbs
 
@@ -7,9 +9,11 @@ from test_bank_statement import TestBankStatement as tbs
 class TestCSVLoader(unittest.TestCase):
 
     def test_load_as_dataframe(self):
-        """"""
+        """Test that CSVLoader.load_as_dataframe returns a pandas.DataFrame"""
+
         results = CSVLoader.load_as_dataframe(tbs.TestDataPath)
         self.assertIsNotNone(results)
+        self.assertIsInstance(results, pandas.DataFrame)
 
     def test_load_as_dataframe_values(self):
         """"""
