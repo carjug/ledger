@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-#  -*- coding: utf-8 -*-
+from utils.csv_utils import CSVLoader
 
 
 class BankStatement(object):
