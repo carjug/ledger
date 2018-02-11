@@ -8,7 +8,14 @@ class CSVLoader(object):
 
     @classmethod
     def load_as_dataframe(cls, file_path):
-        """Load in csv and return data as a pandas dataframe"""
+        """
+        Load in csv and return data as a pandas dataframe
+
+        :param file_path: a path to a .csv file containing all cross-account transactional data
+        :type file_path: str
+
+        :returns: a pandas.DataFrame
+        """
         if not file_path:
             raise ValueError("A path to a .csv file must be supplied to perform a balance inquiry")
 
