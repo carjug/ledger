@@ -2,6 +2,9 @@ from utils.csv_utils import CSVLoader
 
 
 class BankStatement(object):
+    """
+    TODO: Fill this out
+    """
 
     def balance_inquiry(self, date, account_name, file_path):
         """Loads csv data, calculates the balance, and returns a formatted string containing the account information"""
@@ -13,6 +16,14 @@ class BankStatement(object):
 
     @classmethod
     def calculate_balance(cls, account_name, data, date):
+        """Calculates and returns the balance of the account on the date supplied"""
+
+        if not account_name:
+            raise ValueError("account_name must be supplied to perform a balance inquiry")
+
+        if not date:
+            raise ValueError("date must be supplied to perform a balance inquiry")
+
         # initialize all accounts at 0.00 per the exercise specifications
         account_value = 0.00
 
