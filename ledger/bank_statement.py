@@ -3,7 +3,10 @@ from file_loaders.csv_loader import CSVLoader
 
 class BankStatement(object):
     """
-    TODO: Fill this out
+    BankStatement is a class used to retrieve balance information for an account.
+    The BankStatement class needs to be initialized with a .csv seed data file
+    containing the following columns: date,from_account,to_account,amount.
+    Note: the required date format is `YYYY-MM-DD`.
     """
 
     def __init__(self, file_path):
