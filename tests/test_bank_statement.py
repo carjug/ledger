@@ -23,16 +23,19 @@ class TestBankStatement(unittest.TestCase):
 
     def test_calculate_balance_for_early_date(self):
         """Test balance calculation for a date earlier than the earliest date in our data set"""
+
         df = CSVLoader.load_as_dataframe(self.TestDataDir)
         balance = BankStatement.calculate_balance('1989-01-01', 'john', df)
         self.assertEqual(0.00, balance)
 
     def test_calculate_balance_for_null_account_name(self):
         """Test balance calculation when account name is None"""
+
         df = CSVLoader.load_as_dataframe(self.TestDataDir)
         self.assertRaises(ValueError, BankStatement.calculate_balance, '2017-01-01', None, df)
 
     def test_calculate_balance_for_null_date(self):
         """Test balance calculation when date is None"""
+
         df = CSVLoader.load_as_dataframe(self.TestDataDir)
         self.assertRaises(ValueError, BankStatement.calculate_balance, None, 'john', df)
