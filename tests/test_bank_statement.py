@@ -39,3 +39,8 @@ class TestBankStatement(unittest.TestCase):
 
         df = CSVLoader.load_as_dataframe(self.TestDataPath)
         self.assertRaises(ValueError, BankStatement.calculate_balance, None, 'john', df)
+
+    def test_balance_inquiry(self):
+        """Test BankStatement().balance_inquiry() for account name: 'mary', date: '2017-01-15'"""
+        results = BankStatement().balance_inquiry('2017-01-15', 'mary', self.TestDataPath)
+        self.assertEqual(results, "The balance for mary's account on 2017-01-15 is 25.00")
