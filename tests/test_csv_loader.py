@@ -8,13 +8,13 @@ class TestCSVLoader(unittest.TestCase):
 
     def test_load_csv(self):
         """"""
-        results = CSVLoader.load_as_dataframe(tbs.TestDataDir)
+        results = CSVLoader.load_as_dataframe(tbs.TestDataPath)
         self.assertIsNotNone(results)
 
     def test_load_csv_dataframe_values(self):
         """"""
         expected_columns = ['date', 'from_account', 'to_account', 'amount']
-        dataframe = CSVLoader.load_as_dataframe(tbs.TestDataDir)
+        dataframe = CSVLoader.load_as_dataframe(tbs.TestDataPath)
         actual_columns = list(dataframe)
 
         self.assertEqual(expected_columns, actual_columns)
