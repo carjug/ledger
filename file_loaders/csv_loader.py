@@ -19,6 +19,9 @@ class CSVLoader(object):
         if not file_path:
             raise ValueError("A path to a .csv file must be supplied to perform a balance inquiry")
 
+        if not file_path.endswith('.csv'):
+            raise ValueError("File path supplied must point to a .csv file")
+
         try:
             import pandas as pd
             return pd.read_csv(file_path)
