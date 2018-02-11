@@ -6,12 +6,12 @@ from test_bank_statement import TestBankStatement as tbs
 
 class TestCSVLoader(unittest.TestCase):
 
-    def test_load_csv(self):
+    def test_load_as_dataframe(self):
         """"""
         results = CSVLoader.load_as_dataframe(tbs.TestDataPath)
         self.assertIsNotNone(results)
 
-    def test_load_csv_dataframe_values(self):
+    def test_load_as_dataframe_values(self):
         """"""
         expected_columns = ['date', 'from_account', 'to_account', 'amount']
         dataframe = CSVLoader.load_as_dataframe(tbs.TestDataPath)
