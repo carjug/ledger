@@ -24,6 +24,7 @@ class TestBankStatement(unittest.TestCase):
 
     def test_calculate_balance(self):
         """Test BankStatement.calculate_balance() for account name: 'john'"""
+
         balance = self.bank_statement.calculate_balance('2015-02-01', 'john')
         self.assertEqual(-115.00, balance)
 
