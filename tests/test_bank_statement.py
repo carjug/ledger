@@ -10,6 +10,18 @@ class TestBankStatement(unittest.TestCase):
     def setUp(self):
         self.bank_statement = BankStatement(self.TestDataPath)
 
+    def test_bank_statement_account_names(self):
+        """Test BankStatement.account_names property returns full list of account names"""
+
+        expected = ['alice', 'bob', 'charlie', 'chip', 'dale', 'insurance',
+                    'john', 'mary', 'pharmacy', 'samantha', 'supermarket']
+        self.assertEqual(expected, self.bank_statement.account_names)
+
+    def test_bank_statement_date_range(self):
+        """Test BankStatement.date_range property returns tuple of the earliest and latest dates in the data set"""
+
+        self.assertEqual(('2015-01-01', '2015-01-24'), self.bank_statement.date_range)
+
     def test_calculate_balance(self):
         """Test BankStatement.balance_calculation() for account name: 'john'"""
         balance = self.bank_statement.calculate_balance('2015-02-01', 'john')
