@@ -27,12 +27,6 @@ class TestBankStatement(unittest.TestCase):
         balance = self.bank_statement.calculate_balance('2015-02-01', 'john')
         self.assertEqual(-115.00, balance)
 
-    def test_calculate_balance_for_unknown_account_name(self):
-        """Test BankStatement.balance_calculation() for an account name that is not included in the data set"""
-
-        balance = self.bank_statement.calculate_balance('2015-02-01', 'marie')
-        self.assertEqual(0.00, balance)
-
     def test_calculate_balance_for_early_date(self):
         """Test BankStatement.calculate_balance() for a date earlier than the earliest date in our data set"""
 
