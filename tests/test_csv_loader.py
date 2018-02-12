@@ -30,7 +30,7 @@ class TestCSVLoader(unittest.TestCase):
         # assert that an IOError is raised if the .csv file cannot be found
         self.assertRaises(IOError, CSVLoader.load_as_dataframe, 'non_existent_test_file.csv')
 
-        # assert a ValueError if the file_path is not supplied
+        # assert a ValueError if the file_path is None
         self.assertRaises(ValueError, CSVLoader.load_as_dataframe, None)
 
         # assert a ValueError if the file_path does not point to a .csv file
