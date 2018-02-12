@@ -73,3 +73,49 @@ class BankStatement(object):
                     # credit the account
                     account_value += row['amount']
         return account_value
+
+    def _get_account_names(self):
+        """"""
+        account_names = set()
+
+        for index, row in self.data.iterrows():
+            account_names.add(row['to_account'])
+            account_names.add(row['from_account'])
+
+        return sorted(account_names)
+
+    def _get_date_range(self):
+        """"""
+        dates = set()
+
+        for index, row in self.data.iterrows():
+            dates.add(row['date'])
+
+        earliest_date = min(dates)
+        latest_date = max(dates)
+
+        return earliest_date, latest_date
+
+    @property
+    def account_names(self):
+        """"""
+        return self._get_account_names()
+
+    @property
+    def date_range(self):
+        """"""
+        return self._get_date_range()
+
+    @staticmethod
+    def validate_date_format(date):
+        try:
+            datetime.strptime(date, '%Y-%m-%d')
+        except ValueError:
+            raise ValueError("Incorrect date format, should be YYYY-MM-DD")
+
+    def validate_account_name_exists(self, account_name):
+        if account_name not in self.account_names:
+            raise ValueError("Account: {} does not exist in the dataset".format(account_name))
+
+
+
