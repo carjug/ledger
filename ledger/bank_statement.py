@@ -97,6 +97,10 @@ class BankStatement(object):
 
         return earliest_date, latest_date
 
+    def validate_account_name_exists(self, account_name):
+        if account_name not in self.account_names:
+            raise ValueError("Account: {} does not exist in the data set".format(account_name))
+
     @property
     def account_names(self):
         """"""
@@ -114,9 +118,6 @@ class BankStatement(object):
         except ValueError:
             raise ValueError("Incorrect date format, should be YYYY-MM-DD")
 
-    def validate_account_name_exists(self, account_name):
-        if account_name not in self.account_names:
-            raise ValueError("Account: {} does not exist in the dataset".format(account_name))
 
 
 
