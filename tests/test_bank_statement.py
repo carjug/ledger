@@ -1,6 +1,6 @@
-from os import path
 import unittest
 
+from os import path
 from ledger.bank_statement import BankStatement
 
 
