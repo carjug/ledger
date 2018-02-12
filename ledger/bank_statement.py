@@ -37,7 +37,8 @@ class BankStatement(object):
 
         if not date:
             raise ValueError("date must be supplied to perform a balance inquiry")
-        # assert account_name is in our dataset
+
+        # assert account_name is in our data set
         self.validate_account_name_exists(account_name)
 
         # assert date is properly formatted
