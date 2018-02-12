@@ -28,14 +28,14 @@ class TestBankStatement(unittest.TestCase):
         self.assertEqual(0.00, balance)
 
     def test_calculate_balance_for_null_account_name(self):
-        """Test BankStatement.balance_calculation() when account name is None"""
+        """Test BankStatement.balance_inquiry() when account name is None"""
 
-        self.assertRaises(ValueError, self.bank_statement.calculate_balance, '2017-01-01', None)
+        self.assertRaises(ValueError, self.bank_statement.balance_inquiry, '2017-01-01', None)
 
     def test_calculate_balance_for_null_date(self):
-        """Test BankStatement.balance_calculation() when date is None"""
+        """Test BankStatement.balance_inquiry() when date is None"""
 
-        self.assertRaises(ValueError, self.bank_statement.calculate_balance, None, 'john')
+        self.assertRaises(ValueError, self.bank_statement.balance_inquiry, None, 'john')
 
     def test_balance_inquiry(self):
         """Test BankStatement().balance_inquiry() for account name: 'mary', date: '2017-01-15'"""

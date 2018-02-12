@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from file_loaders.csv_loader import CSVLoader
 
 
@@ -30,6 +32,16 @@ class BankStatement(object):
 
         :returns: a formatted string
         """
+        if not account_name:
+            raise ValueError("account_name must be supplied to perform a balance inquiry")
+
+        if not date:
+            raise ValueError("date must be supplied to perform a balance inquiry")
+        # assert account_name is in our dataset
+        self.validate_account_name_exists(account_name)
+
+        # assert date is properly formatted
+        self.validate_date_format(date)
 
         account_value = self.calculate_balance(date, account_name)
 
@@ -46,12 +58,6 @@ class BankStatement(object):
 
         :returns: a float of the balance
         """
-
-        if not account_name:
-            raise ValueError("account_name must be supplied to perform a balance inquiry")
-
-        if not date:
-            raise ValueError("date must be supplied to perform a balance inquiry")
 
         # initialize all accounts at 0.00 per the exercise specifications
         account_value = 0.00
