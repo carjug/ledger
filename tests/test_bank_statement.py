@@ -1,10 +1,11 @@
+from os import path
 import unittest
 
 from ledger.bank_statement import BankStatement
 
 
 class TestBankStatement(unittest.TestCase):
-    TestDataPath = './test_data/test_data.csv'
+    TestDataPath = path.join(path.dirname(path.abspath(__file__)), './test_data/test_data.csv')
 
     def setUp(self):
         self.bank_statement = BankStatement(self.TestDataPath)
