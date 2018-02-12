@@ -32,17 +32,11 @@ class BankStatement(object):
 
         :returns: a formatted string
         """
-        if not account_name:
-            raise ValueError("account_name must be supplied to perform a balance inquiry")
-
-        if not date:
-            raise ValueError("date must be supplied to perform a balance inquiry")
-
         # assert account_name is in our data set
         self.validate_account_name_exists(account_name)
 
-        # assert date is properly formatted
-        self.validate_date_format(date)
+        # assert date exists and is properly formatted
+        self.validate_date(date)
 
         account_value = self.calculate_balance(date, account_name)
 
@@ -98,6 +92,10 @@ class BankStatement(object):
         return earliest_date, latest_date
 
     def validate_account_name_exists(self, account_name):
+        """"""
+        if not account_name:
+            raise ValueError("account_name must be supplied to perform a balance inquiry")
+
         if account_name not in self.account_names:
             raise ValueError("Account: {} does not exist in the data set".format(account_name))
 
@@ -112,7 +110,11 @@ class BankStatement(object):
         return self._get_date_range()
 
     @staticmethod
-    def validate_date_format(date):
+    def validate_date(date):
+        """"""
+        if not date:
+            raise ValueError("date must be supplied to perform a balance inquiry")
+
         try:
             datetime.strptime(date, '%Y-%m-%d')
         except ValueError:
