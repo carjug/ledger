@@ -72,7 +72,7 @@ class BankStatement(object):
 
     def _get_account_names(self):
         """
-        Creates a set() of all account names in self.data
+        Creates a unique set() of all account names in self.data
 
         :returns: a sorted list
         """
@@ -87,7 +87,7 @@ class BankStatement(object):
 
     def _get_date_range(self):
         """
-        Creates a set() of all dates in self.data and calculates the earliest and the latest dates
+        Creates a unique set() of all dates in self.data and calculates the earliest and the latest dates
 
         :returns: a tuple of the earliest and latest dates
         """
