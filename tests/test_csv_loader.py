@@ -1,17 +1,18 @@
 import unittest
-
 import pandas
 
+from os import path
+
 from file_loaders.csv_loader import CSVLoader
-from test_bank_statement import TestBankStatement as tbs
 
 
 class TestCSVLoader(unittest.TestCase):
+    TestDataPath = path.join(path.dirname(path.abspath(__file__)), './test_data/test_data.csv')
 
     def test_load_as_dataframe(self):
         """Test that CSVLoader.load_as_dataframe returns a pandas.DataFrame"""
 
-        results = CSVLoader.load_as_dataframe(tbs.TestDataPath)
+        results = CSVLoader.load_as_dataframe(self.TestDataPath)
         self.assertIsNotNone(results)
         self.assertIsInstance(results, pandas.DataFrame)
 
@@ -19,7 +20,7 @@ class TestCSVLoader(unittest.TestCase):
         """Test that CSVLoader.load_as_dataframe returns a dataframe with the correct column names"""
 
         expected_columns = ['date', 'from_account', 'to_account', 'amount']
-        dataframe = CSVLoader.load_as_dataframe(tbs.TestDataPath)
+        dataframe = CSVLoader.load_as_dataframe(self.TestDataPath)
         actual_columns = list(dataframe)
 
         self.assertEqual(expected_columns, actual_columns)
