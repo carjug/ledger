@@ -16,8 +16,8 @@ class TestBankStatement(unittest.TestCase):
     def test_bank_statement_account_names(self):
         """Test BankStatement.account_names property returns full list of account names"""
 
-        expected = ['alice', 'bob', 'charlie', 'chip', 'dale', 'insurance',
-                    'john', 'mary', 'pharmacy', 'samantha', 'supermarket']
+        expected = ['alice', 'bob', 'charlie', 'chip', 'dale', 'insurance', 'john',
+                    'mary', 'pharmacy', 'restaurant', 'samantha', 'supermarket']
         self.assertEqual(expected, self.bank_statement.account_names)
 
     def test_bank_statement_date_range(self):
@@ -47,7 +47,7 @@ class TestBankStatement(unittest.TestCase):
         """Test BankStatement().balance_inquiry() for account name: 'alice', date: '2015-01-10'"""
 
         results = self.bank_statement.balance_inquiry('2015-01-15', 'alice')
-        self.assertEqual(results, "The balance for alice's account on 2015-01-15 is 1.00")
+        self.assertEqual(results, "The balance for alice's account on 2015-01-15 is -1.65")
 
     def test_balance_inquiry_with_date_on_transaction_date(self):
         """Test BankStatement().balance_inquiry() when input date and transaction date are equal"""
