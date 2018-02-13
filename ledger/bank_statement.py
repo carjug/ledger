@@ -8,6 +8,7 @@ class BankStatement(object):
     BankStatement is a class used to retrieve balance information for an account.
     The BankStatement class needs to be initialized with a .csv seed data file
     containing the following columns: date,from_account,to_account,amount.
+
     Note: the required date format is `YYYY-MM-DD`.
     """
 
@@ -114,12 +115,10 @@ class BankStatement(object):
 
     @property
     def account_names(self):
-        """"""
         return self._get_account_names()
 
     @property
     def date_range(self):
-        """"""
         return self._get_date_range()
 
     @staticmethod
