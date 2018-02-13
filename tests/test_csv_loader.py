@@ -25,13 +25,16 @@ class TestCSVLoader(unittest.TestCase):
         self.assertEqual(expected_columns, actual_columns)
 
     def test_load_as_dataframe_bad_file_path(self):
-        """Test CSVLoader.load_as_dataframe raises with bad input"""
+        """Test that CSVLoader.load_as_dataframe raises an IOError when the file cannot be found"""
 
         # assert that an IOError is raised if the .csv file cannot be found
         self.assertRaises(IOError, CSVLoader.load_as_dataframe, 'non_existent_test_file.csv')
 
+    def test_validate_file_path_bad_file_path(self):
+        """Test CSVLoader.validate_file_path raises when invalid"""
+
         # assert a ValueError if the file_path is None
-        self.assertRaises(ValueError, CSVLoader.load_as_dataframe, None)
+        self.assertRaises(ValueError, CSVLoader.validate_file_path, None)
 
         # assert a ValueError if the file_path does not point to a .csv file
-        self.assertRaises(ValueError, CSVLoader.load_as_dataframe, 'non_existent_test_file.txt')
+        self.assertRaises(ValueError, CSVLoader.validate_file_path, 'non_existent_test_file.txt')
