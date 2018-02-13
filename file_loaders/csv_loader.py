@@ -16,14 +16,24 @@ class CSVLoader(object):
 
         :returns: a pandas.DataFrame
         """
-        if not file_path:
-            raise ValueError("A path to a .csv file must be supplied to perform a balance inquiry")
-
-        if not file_path.endswith('.csv'):
-            raise ValueError("File path supplied must point to a .csv file")
+        cls.validate_file_path(file_path)
 
         try:
             import pandas as pd
             return pd.read_csv(file_path)
         except IOError as e:
             raise IOError("Failed to load {}, with message: {}".format(file_path, e.message))
+
+    @classmethod
+    def validate_file_path(cls, file_path):
+        """
+        :param file_path: the file path to validate
+        :type file_path: str
+
+        :returns: raises if invalid or None
+        """
+        if not file_path:
+            raise ValueError("A path to a .csv file must be supplied to perform a balance inquiry")
+
+        if not file_path.endswith('.csv'):
+            raise ValueError("File path supplied must point to a .csv file")
