@@ -61,6 +61,6 @@ bank_statement.account_names
 ### Running the tests
 To run the unittests from the command line
 ```shell
-python -m unittest discover
+python -m unittest discover -v
 
 ```
