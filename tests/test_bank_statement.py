@@ -75,3 +75,7 @@ class TestBankStatement(unittest.TestCase):
 
         self.assertRaises(ValueError, self.bank_statement.balance_inquiry, '01-03-2015', 'john')
 
+    def test_balance_inquiry_for_non_numeric_characters(self):
+        """Test BankStatement.balance_inquiry() when date contains non-numeric characters"""
+
+        self.assertRaises(ValueError, self.bank_statement.balance_inquiry, 'xxxx-01-30', 'john')
