@@ -10,6 +10,9 @@ class TestBankStatement(unittest.TestCase):
     def setUp(self):
         self.bank_statement = BankStatement(self.TestDataPath)
 
+    def tearDown(self):
+        self.bank_statement = None
+
     def test_bank_statement_account_names(self):
         """Test BankStatement.account_names property returns full list of account names"""
 
