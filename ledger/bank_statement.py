@@ -9,7 +9,8 @@ class BankStatement(object):
     The BankStatement class needs to be initialized with a .csv seed data file
     containing the following columns: date,from_account,to_account,amount.
 
-    Note: the required date format is `YYYY-MM-DD`.
+    Note: this class should be used to conduct other types of cross-account calculations,
+    but currently only supports a balance_inquiry() calculation.
     """
 
     def __init__(self, file_path):
