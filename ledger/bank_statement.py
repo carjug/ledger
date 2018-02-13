@@ -82,6 +82,7 @@ class BankStatement(object):
             account_names.add(row['to_account'])
             account_names.add(row['from_account'])
 
+        # sort set alphabetically and return
         return sorted(account_names)
 
     def _get_date_range(self):
@@ -127,7 +128,7 @@ class BankStatement(object):
         :param date: the date to validate
         :type date: str
 
-        :return: raises if invalid or None
+        :returns: raises if invalid or None
         """
         if not date:
             raise ValueError("date must be supplied to perform a balance inquiry")
