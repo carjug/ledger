@@ -70,7 +70,11 @@ class BankStatement(object):
         return account_value
 
     def _get_account_names(self):
-        """"""
+        """
+        Creates a set() of all account names in self.data
+
+        :returns: a sorted list
+        """
         account_names = set()
 
         for index, row in self.data.iterrows():
@@ -80,7 +84,11 @@ class BankStatement(object):
         return sorted(account_names)
 
     def _get_date_range(self):
-        """"""
+        """
+        Creates a set() of all dates in self.data and calculates the earliest and the latest dates
+
+        :returns: a tuple of the earliest and latest dates
+        """
         dates = set()
 
         for index, row in self.data.iterrows():
@@ -92,7 +100,12 @@ class BankStatement(object):
         return earliest_date, latest_date
 
     def validate_account_name_exists(self, account_name):
-        """"""
+        """
+        :param account_name: the account name to validate
+        :type account_name: str
+
+        :returns: raises if invalid or None
+        """
         if not account_name:
             raise ValueError("account_name must be supplied to perform a balance inquiry")
 
@@ -111,7 +124,12 @@ class BankStatement(object):
 
     @staticmethod
     def validate_date(date):
-        """"""
+        """
+        :param date: the date to validate
+        :type date: str
+
+        :return: raises if invalid or None
+        """
         if not date:
             raise ValueError("date must be supplied to perform a balance inquiry")
 
